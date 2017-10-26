@@ -1,18 +1,20 @@
 !(() => {
   // html模版
-  const template = `<section id="notify-container" class="notify-container">
+  const template = `<section   id="notify-container" class="notify-container">
                         <h3 class="notify-title"></h3>
                         <article class="notify-content"></article>
+                        <p  id="notify-footer" class="notify-footer"></p>  
                       </section>`
 
-  // Help类，这里作用是一个utils
+  // Help类，这里作用是一个utils  
   class Help {
     // html => node
     html2node(str) {
-      const container = document.createElement('div')
-      container.innerHTML = str
+      const container = document.createElement('div')    
+      container.innerHTML = str 
       return container.children[0]
     }
+  
   }
 
   // Notify类
@@ -20,7 +22,8 @@
     // 构造函数
     constructor(props = { // 设置默认值
       title: 'title',
-      content: 'content'
+      content: 'content',
+      footer:'footer'                 //增加footer
     }) {
       // 子类必须在constructor中调用super
       super()
@@ -33,6 +36,8 @@
       this.notifyTitle = this.notify.querySelector('.notify-title')
       // notifyContent node
       this.notifyContent = this.notify.querySelector('.notify-content')
+      //notifyFooter node
+       this.notifyFooter=this.notify.querySelector('.notify-footer')
       // 初始化
       this._init()
       // notify append 到 容器
@@ -47,26 +52,35 @@
       this.notify.style.display = 'none'
       this.notifyTitle.innerText = this.props.title
       this.notifyContent.innerText = this.props.content
+      this.notifyFooter.innerText=this.props.footer
     }
 
     // notify 显示
-    show(opt = {
+     show(opt = {
       autoHide: true,
-      timeout: 1000
-    }) {
+      timeout: 1000,
+      
+    } )
+
+     {
       this.notify.style.display = 'block'
       // 显示后经过一段时间自动隐藏
-      if (opt.autoHide) {
-        setTimeout(() => {
-          this.notify.style.display = 'none'
-        }, opt.timeout)
+      if (opt.autoHide) {            
+        setTimeout(() => {             
+          this.notify.style.display = 'none'  //none
+        },opt.timeout)        
       }
-    }
+    }   
 
     hide() {
       this.notify.style.display = 'none'
+      notify.show({
+        autoHide: true,
+        timeout: 20000000
+    })
     }
   }
+
 
   // API支持:  Amd || Commonjs  || Global 
   if (typeof exports === 'object') {
@@ -78,5 +92,15 @@
   } else {
     window.Notify = Notify
   }
+
+
+  $(document).ready(function(){
+   
+    $("#notify-footer").click(function(){
+      $("#notify-container").hide();
+    })
+  
+  })
+ 
 
 })()

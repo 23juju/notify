@@ -1,32 +1,39 @@
 # notify
 
-## 如何使用
-html中引入notify.js和notify.css
-
-## 参数
-+ `container` 容器节点 默认为document.body
-+ `title` string 标题
-+ `content` string 内容
+## 功能说明
+### 加入关闭与打开通知功能，并对container的样式做了改变
 
 ## 方法
-### show(options)
-+ 描述：notify show
-+ options
-  + `autoHide` boolean true/false notify显示后是否在一段时间后自动隐藏 默认为true
-  + `timeout` number notify显示后经过多久自动隐藏 autoHide为true时生效 默认为1000(ms)
 
-### hide()
-  + 描述: notify hide
+### 关闭通知
 
-## 示例
-```js
-const notify = new Notify({
-  title: '最新通知',
-  content: 'notify预览版发布'
-})
++ 采用“button”键，点击“关闭”键
 
-notify.show({
-  autoHide: true,
-  timeout: 2000
-})
-```
+    onclick="document.getElementById   ('notify-container')
+     .style.display='none'"
+
+
++ 20秒后自动关闭
+
++ 在container的页脚点击“我知道了”，也可关闭
+
+     在container中增加footer，然后利用JQuery写法
+        $(document).ready(function(){  
+         $("#notify-footer").click(function(){
+            $("#notify-container").hide();
+          })
+      })
+     
+
+### 打开通知
+
++ 点击“通知”键盘
+
+    onclick="document.getElementById('notify-container')
+        .style.display='block'"
+
+### 样式改变
+   
++ 设置背景颜色
++ 设置滚动
++ 放置鼠标改变背景色、字体大小

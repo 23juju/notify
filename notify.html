@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>notify</title>
+    <link rel="stylesheet" type="text/css" 
+    href="notify.css"/>
+    <script src="jquery-3.2.1.min.js"></script>  
+    
+</head>
+<body   >
+    <h1>这是我做的第一个组件</h1> 
+    <h2>功能说明</h2>
+    <h3>一、关闭</h3><p>1、20秒后自动关闭</br>
+            2、点击关闭按钮（采用button键）</br>
+            3、在container的页脚点击“我知道了”</br>
+            <br></p>
+     <h3>二、 打开通知</h3> <p>1、点击“通知”按钮</p>
+    
+    <button type="button" class="close" onclick="document.getElementById('notify-container')
+        .style.display='none'">关闭 </button>
+        <button type="button" class="open" onclick="document.getElementById('notify-container')
+        .style.display='block'">通知 </button>
+    <script type="text/javascript" src="notify.js">
+   </script>
+   <script type="text/javascript" src="notify1.js">
+   </script>
+    </body>
+</html>
